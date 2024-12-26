@@ -1,0 +1,23 @@
+  <div class="header">
+    <h2>Time and Attendance</h2>
+    <div class="time-display">
+      <p>{{ currentDate }}</p>
+      <p>{{ currentTime }}</p>
+    </div>
+
+
+
+  <div class="buttons">
+    <button (click)="onMarkInTime()">Mark In Time</button>
+    <button (click)="onMarkOutTime()">Mark Out Time</button>
+  </div>
+
+  <div class="marked-times">
+    <p>Marked In Time: {{ markInTime }}</p>
+    <p>Marked Out Time: {{ markOutTime }}</p>
+  </div>
+</div>
+
+<div class="calendar-container">
+      <full-calendar [options]="calendarOptions"></full-calendar>
+    </div>
