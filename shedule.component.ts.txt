@@ -1,0 +1,73 @@
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/core'; // Ensure proper import
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import listPlugin from '@fullcalendar/list'; // For List view
+import timeGridPlugin from '@fullcalendar/timegrid';
+
+@Component({
+  selector: 'app-shedule',
+  templateUrl: './schedule.component.html',
+  styleUrls: ['./schedule.component.css']
+})
+export class SheduleComponent implements OnInit, OnDestroy {
+  calendarOptions: CalendarOptions = {
+    plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
+    initialView: 'dayGridMonth', // Default view
+  
+    headerToolbar: {
+      left: 'prev,today,prevYear',
+      center: 'title',
+      right: 'nextYear dayGridMonth,timeGridWeek,timeGridDay,next' // Added nextYear button for navigating to next year
+    },
+    height: 400,
+    contentHeight: 'auto',
+    aspectRatio: 1.5,
+  };
+
+  currentDate: string = '';
+  currentTime: string = '';
+  private timerInterval: any;
+
+  markInTime: string = '';
+  markOutTime: string = '';
+
+  ngOnInit(): void {
+    this.updateTime();
+    this.timerInterval = setInterval(() => {
+      this.updateTime();
+    }, 1000);
+  }
+
+  ngOnDestroy(): void {
+    if (this.timerInterval) {
+      clearInterval(this.timerInterval);
+    }
+  }
+
+  updateTime(): void {
+    const now = new Date();
+    this.currentDate = now.toLocaleDateString('en-US', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
+    this.currentTime = now.toLocaleTimeString('en-US', {
+      hour: '2-digit',
+      minute: '2-digit',
+      second: '2-digit',
+      hour12: true
+    });
+  }
+
+  onMarkInTime(): void {
+    this.markInTime = new Date().toLocaleString();
+    console.log('Marked In Time:', this.markInTime);
+  }
+
+  onMarkOutTime(): void {
+    this.markOutTime = new Date().toLocaleString();
+    console.log('Marked Out Time:', this.markOutTime);
+  }
+}
