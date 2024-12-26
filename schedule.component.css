@@ -1,0 +1,242 @@
+/* Main Container */
+.main-container {
+  font-family: Arial, sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+
+/* Header Section */
+.header {
+  flex: 1;
+  width: 20%;
+  height: 550px;
+  padding: 20px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.calendar-container {
+  margin-left: 22rem;
+  margin-top: -37rem;
+  width: 40%;
+  padding: 50px;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+
+/* Title Styling */
+.header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #333;
+}
+
+/* Time Display Section */
+.time-display {
+  margin-top: 2rem;
+  font-size: 1.1rem;
+  color: #666;
+}
+
+.time-display p {
+  margin: 5px 0;
+}
+
+/* Buttons Section */
+.buttons {
+  margin-top: 9rem;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* Common Button Styles */
+.buttons button {
+  margin-top: 1rem;
+  background-color: #007bff; /* Primary color */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-transform: capitalize; /* Capitalize button labels like "Mark In Time" */
+}
+
+/* Hover effect for buttons */
+.buttons button:hover {
+  background-color: #0056b3; /* Darker blue for hover */
+}
+
+/* Active button */
+.buttons button.active {
+  background-color: #0056b3;
+  color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled button state */
+.buttons button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Marked Times Display Section */
+.marked-times {
+  margin-top: 9rem;
+  padding: 10px;
+  background-color: #f0f8ff;
+  border-radius: 8px;
+  border: 1px solid #d0e7f7;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
+
+.marked-times p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.marked-times p:first-child {
+  color: #4caf50; /* Green for Mark In Time */
+}
+
+.marked-times p:last-child {
+  color: #f44336; /* Red for Mark Out Time */
+}
+
+/* Ensure the entire page takes up full height */
+body, html {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;  /* Horizontally center the content */
+  align-items: center;      /* Vertically center the content */
+  background-color: #f4f4f4;
+}
+
+/* Main Container (Keeps everything in place and centered) */
+.main-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: 90%;
+  max-width: 1200px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px #0056b3(0, 0, 0, 0.1);
+}
+
+
+
+/* FullCalendar */
+.fc {
+  width: 100%; /* Ensure the calendar fills the container */
+  font-size: 14px;
+}
+
+/* Calendar Title */
+.fc-toolbar-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #0056b3;
+}
+
+/* Buttons in Calendar Header */
+.fc-button {
+  font-size: 12px;
+  padding: 6px 10px;
+  gap: 10px;
+  color: white;
+  background-color: #007bff;
+  border-radius: 5px;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for calendar buttons */
+.fc-button:hover {
+  background-color: #0056b3;
+}
+
+/* Active Button in Calendar Header */
+.fc-button.fc-button-active {
+  background-color: #0056b3;
+  color: white;
+  box-shadow: 0 2px 4px #0056b3(0, 0, 0, 0.2);
+}
+
+/* Disabled Calendar Buttons */
+.fc-button:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .header, .calendar-container {
+    flex: 1;
+    min-width: unset;
+    max-width: 90%;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .header h2 {
+    font-size: 1.5rem;
+  }
+
+  .buttons button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .time-display {
+    font-size: 0.9rem;
+  }
+
+  .marked-times {
+    font-size: 0.9rem;
+  }
+
+  .fc-toolbar-title {
+    font-size: 1.3rem;
+  }
+
+  .fc-button {
+    font-size: 0.9rem;
+    padding: 6px 10px;
+  }
+}
